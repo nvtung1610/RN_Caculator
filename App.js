@@ -11,7 +11,8 @@ const App = () => {
   const handleButtonPress = value => {
     if (value === '=') {
       const result = caculator(currentInput);
-      setResult(result);
+      setCurrentInput(result);
+      setResult('');
     } else if (value === 'C') {
       setCurrentInput('');
       setResult('');
@@ -28,12 +29,12 @@ const App = () => {
   };
   useEffect(() => {
     if (!isNaN(currentInput) || currentInput === '') {
-      // if current input is a number or empty, do not update result state
+      // nếu input là rỗng hoặc không phải là số thì không update
       return;
     }
     const result = caculator(currentInput);
     if (!isNaN(result)) {
-      // if result is a valid number, update result state
+      // nếu result là số hợp lệ thì update
       setResult(result);
     } else if (isNaN(result)) {
       setResult('');
