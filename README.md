@@ -1,5 +1,16 @@
 # RN_Caculator
 
-Màn hình minh hoạ của úng dụng 
+MÀN HÌNH MINH HOẠ CỦA ỨNG DỤNG
 
-![Screenshot_20230313_015758_Caculator](https://user-images.githubusercontent.com/93763364/224566684-92646cb0-9b0c-451c-8cdc-43db288ae1d0.jpg)
+
+
+![CACULATOR](https://user-images.githubusercontent.com/93763364/224567504-32c83a77-33ea-4415-aedd-9f9ae1f6e5ca.jpg)
+
+
+Một số tính năng chính : 
+
++ Tính toán cộng ,trừ ,nhân ,chia với các số ( bao gồm cả số lớn)
++ Xoá các kí tự đã nhập , ấn nút C để reset lại phép tính 
++ Kết quả tự động hiện ra ở dưới phép tính 
++ Khi ấn dấu "=" , kết quả được đưa lên trên 
++ Thông báo khi nhập quá giới hạn (50 kí tự ) 
