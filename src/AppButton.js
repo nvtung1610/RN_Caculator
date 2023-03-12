@@ -5,7 +5,7 @@ export default AppButton = props => {
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
 
-  const type = props.type;
+  const {type, onPress} = props;
 
   const textColor = type === 'symbol' ? '#45cee1' : '#808080'; // Set text color based on type prop
 
@@ -22,7 +22,8 @@ export default AppButton = props => {
         backgroundColor: props.backgroundColor,
         justifyContent: 'center',
         alignItems: 'center',
-      }}>
+      }}
+      onPress={onPress}>
       <Text
         style={{
           color: type ? textColor : defaultTextColor,
