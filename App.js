@@ -4,29 +4,13 @@ import {StyleSheet, View, SafeAreaView, Text, Alert} from 'react-native';
 import AppButton from './src/AppButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {caculator, formatNumber} from './src/Utils';
+import {styles} from './style';
+
 const App = () => {
   const iconSize = 30;
   const [currentInput, setCurrentInput] = useState('');
   const [result, setResult] = useState('');
-  const handleButtonPress = value => {
-    if (value === '=') {
-      const result = caculator(currentInput);
-      setCurrentInput(result);
-      setResult('');
-    } else if (value === 'C') {
-      setCurrentInput('');
-      setResult('');
-    } else {
-      // Check if currentInput length is greater than 12
-      if (currentInput.length >= 50) {
-        Alert.alert('Quá giới hạn', 'Bạn đã đến giới hạn độ dài.', [
-          {text: 'OK'},
-        ]);
-      } else {
-        setCurrentInput(currentInput + value);
-      }
-    }
-  };
+
   useEffect(() => {
     if (!isNaN(currentInput) || currentInput === '') {
       // nếu input là rỗng hoặc không phải là số thì không update
@@ -40,6 +24,26 @@ const App = () => {
       setResult('');
     }
   }, [currentInput]);
+
+  const handleButtonPress = value => {
+    if (value === '=') {
+      const result = caculator(currentInput);
+      setCurrentInput(result);
+      setResult('');
+    } else if (value === 'C') {
+      setCurrentInput('');
+      setResult('');
+    } else {
+      // Kiểm tra nếu độ dài lớn hơn 50
+      if (currentInput.length >= 50) {
+        Alert.alert('Quá giới hạn', 'Bạn đã đến giới hạn độ dài.', [
+          {text: 'OK'},
+        ]);
+      } else {
+        setCurrentInput(currentInput + value);
+      }
+    }
+  };
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
@@ -178,7 +182,5 @@ const App = () => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({});
 
 export default App;
