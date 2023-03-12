@@ -161,7 +161,10 @@ const App = () => {
           type="symbol"
           onPress={() => handleButtonPress('÷')}
         />
-        <AppButton value={<Text>test</Text>} type="symbol" />
+        <AppButton
+          value={<Icon name="content-duplicate" size={iconSize} />}
+          type="symbol"
+        />
         <AppButton
           value="0"
           type="number"
