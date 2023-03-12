@@ -14,3 +14,12 @@ Một số tính năng chính :
 + Kết quả tự động hiện ra ở dưới phép tính 
 + Khi ấn dấu "=" , kết quả được đưa lên trên 
 + Thông báo khi nhập quá giới hạn (50 kí tự ) 
+
+
+DEMO VIDEO : 
+
+
+
+
+https://user-images.githubusercontent.com/93763364/224567855-af21152a-b60b-45bd-bed8-67191a77611f.mp4
+
