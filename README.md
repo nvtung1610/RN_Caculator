@@ -4,9 +4,9 @@ MÀN HÌNH MINH HOẠ CỦA ỨNG DỤNG
 
 
 
-![CACULATOR](https://user-images.githubusercontent.com/93763364/224567504-32c83a77-33ea-4415-aedd-9f9ae1f6e5ca.jpg)
 
 
+<img src="https://user-images.githubusercontent.com/93763364/224567504-32c83a77-33ea-4415-aedd-9f9ae1f6e5ca.jpg"  width="300" height="667">
 Một số tính năng chính : 
 
 + Tính toán cộng ,trừ ,nhân ,chia với các số ( bao gồm cả số lớn)
