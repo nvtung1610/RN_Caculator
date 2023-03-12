@@ -1,38 +1,53 @@
-import React, {useState} from 'react';
-import {StyleSheet, View, SafeAreaView, Text} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, View, SafeAreaView, Text, Alert} from 'react-native';
 
 import AppButton from './src/AppButton';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import {caculator, formatNumber} from './src/Utils';
 const App = () => {
   const iconSize = 30;
   const [currentInput, setCurrentInput] = useState('');
   const [result, setResult] = useState('');
-
-  const caculator = expression => {
-    try {
-      const result = eval(expression);
-      return String(result);
-    } catch (error) {
-      return 'Error';
-    }
-  };
-
-  // const [operation, setOperation] = useState(null);
-
   const handleButtonPress = value => {
     if (value === '=') {
       const result = caculator(currentInput);
       setResult(result);
     } else if (value === 'C') {
       setCurrentInput('');
+      setResult('');
     } else {
-      setCurrentInput(currentInput + value);
+      // Check if currentInput length is greater than 12
+      if (currentInput.length >= 50) {
+        Alert.alert('Quá giới hạn', 'Bạn đã đến giới hạn độ dài.', [
+          {text: 'OK'},
+        ]);
+      } else {
+        setCurrentInput(currentInput + value);
+      }
     }
   };
+  useEffect(() => {
+    if (!isNaN(currentInput) || currentInput === '') {
+      // if current input is a number or empty, do not update result state
+      return;
+    }
+    const result = caculator(currentInput);
+    if (!isNaN(result)) {
+      // if result is a valid number, update result state
+      setResult(result);
+    } else if (isNaN(result)) {
+      setResult('');
+    }
+  }, [currentInput]);
+
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
       <View style={{flex: 1}}>
         <Text
+          numberOfLines={1}
+          ellipsizeMode="tail"
+          allowFontScaling={true}
+          adjustsFontSizeToFit={true}
           style={{
             fontSize: 50,
             textAlign: 'right',
@@ -48,7 +63,7 @@ const App = () => {
             color: '#808080',
             paddingRight: 10,
           }}>
-          {result}
+          {formatNumber(result)}
         </Text>
       </View>
       <View
@@ -119,7 +134,7 @@ const App = () => {
         <AppButton
           value={<Icon name="close" size={iconSize} />}
           type="symbol"
-          onPress={() => handleButtonPress('*')}
+          onPress={() => handleButtonPress('x')}
         />
         <AppButton
           value="1"
@@ -139,7 +154,7 @@ const App = () => {
         <AppButton
           value={<Icon name="division" size={iconSize} />}
           type="symbol"
-          onPress={() => handleButtonPress('/')}
+          onPress={() => handleButtonPress('÷')}
         />
         <AppButton value={<Text>test</Text>} type="symbol" />
         <AppButton

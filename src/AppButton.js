@@ -12,8 +12,13 @@ export default AppButton = props => {
   const defaultTextColor = '#ffffff'; // Set default text color
   const defaultTextSize = 30; // Set default text color
 
+  const [isPressed, setIsPressed] = useState(false);
+
   return (
     <TouchableOpacity
+      activeOpacity={1}
+      onPressIn={() => setIsPressed(true)}
+      onPressOut={() => setIsPressed(false)}
       style={{
         width: windowWidth / 4,
         height: windowWidth / 4,
@@ -24,13 +29,21 @@ export default AppButton = props => {
         alignItems: 'center',
       }}
       onPress={onPress}>
-      <Text
+      <View
         style={{
-          color: type ? textColor : defaultTextColor,
-          fontSize: 30,
+          transform: [{scale: isPressed ? 0.8 : 1}],
+          borderColor: '#e5e5e5e5',
+          padding: 10,
+          borderRadius: 10,
         }}>
-        {props.value}
-      </Text>
+        <Text
+          style={{
+            color: type ? textColor : defaultTextColor,
+            fontSize: 30,
+          }}>
+          {props.value}
+        </Text>
+      </View>
     </TouchableOpacity>
   );
 };
